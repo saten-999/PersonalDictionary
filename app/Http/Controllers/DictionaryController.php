@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dictionary;
 use Illuminate\Http\Request;
-
+use Auth;
 class DictionaryController extends Controller
 {
     /**
@@ -38,10 +38,10 @@ class DictionaryController extends Controller
     public function store(Request $request)
     {
         $data = $request ->validate([
-            'armenian' => 'required | unique:dictionaries',
-            'english' => 'required | unique:dictionaries'
+            'armenian' => 'required|unique:dictionaries',
+            'english' => 'required|unique:dictionaries'
         ]);
-
+        $data['user_id'] = Auth::user()->id;
         $words = Dictionary::create($data);
 
         return response()->json($words);

@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Dictionary extends Model
 {
     protected $fillable = [
-        'armenian', 'english'
+        'armenian', 'english', 'user_id'
     ];
+
+
+    public function user()
+    {
+         return $this->belongsTo('App\User');
+    }
 }

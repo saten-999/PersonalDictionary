@@ -24,16 +24,16 @@ Route::get('/dictionary', 'DictionaryController@index');
 Route::post('/dictionary', 'DictionaryController@store');
 
 
-Route::get('/mail', function () {
+// Route::get('/mail', function () {
 
-    $user = User::latest()->get();
+//     $user = User::latest()->get();
 
-    foreach ($user as $key => $value) {
+//     foreach ($user as $key => $value) {
 
-        Mail::to('satabr1999@gmail.com')->send( new App\Mail\Reminder());
+//         Mail::to('satabr1999@gmail.com')->send( new App\Mail\Reminder());
 
-    }
+//     }
   
 
-    echo "done";
-});
+//     echo "done";
+// });

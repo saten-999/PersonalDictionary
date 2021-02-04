@@ -18,8 +18,10 @@ class CreateDictionariesTable extends Migration
             $table->string('armenian');
             $table->string('english');
             $table->foreignId('user_id');
-
+            $table->timestamps();
+            
             $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 
