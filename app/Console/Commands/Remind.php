@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Mail;
+use App\User;
 use App\Mail\Reminder;
 class Remind extends Command
 {
@@ -40,17 +41,17 @@ class Remind extends Command
     {
         \Log::info("Cron is working fine!");
 
-        $user = User::latest()->get();
+        $users = User::latest()->get();
 
-        // foreach ($user as $key => $value) {
+        foreach ($users as $user) {
 
-        //     Mail::to('satabr1999@gmail.com')->send( new App\Mail\Reminder());
+            Mail::to('satabr1999@gmail.com')->send(new Reminder());
             
-        // }
-        Mail::to('satabr1999@gmail.com')->send( new Reminder());
+        }
+        // Mail::to('satabr1999@gmail.com')->send( new Reminder());
 
 
-        $this->info('Demind Cummand Run successfully!');
+        $this->info('Remind Cummand Run successfully!');
 
 
    
