@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('mail:remind')->everyMinute();
+        $schedule->command('mail:remind')->everyFiveMinutes();
     }
 
     /**
