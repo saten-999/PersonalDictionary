@@ -50,7 +50,7 @@ class Remind extends Command
             
             }
           
-            $this->call('schedule:run');
+            // $this->call('schedule:run');
 
         }
    
