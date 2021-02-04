@@ -26,7 +26,12 @@
                     <div class="col-sm-5">
                         {{ word.english}}
                     </div>
-                    <div class="col-sm-2"> </div>
+                    <div class="col-sm-1"> 
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <div class="col-sm-1">
+                        <i class="fas fa-trash-alt"></i>
+                     </div>
                 </div>
             </div>
         </div>
@@ -34,6 +39,8 @@
 </template>
 
 <script>
+import fontawesome from "@fortawesome/fontawesome"
+
     export default {
 
         data() {

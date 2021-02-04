@@ -39,21 +39,20 @@ class Remind extends Command
      */
     public function handle()
     {
-        \Log::info("Cron is working fine!");
 
-        $users = User::latest()->get();
+        while (true) {
 
-        foreach ($users as $user) {
+            $users = User::latest()->get();
 
-            Mail::to('satabr1999@gmail.com')->send(new Reminder());
+            foreach ($users as $user) {
+
+                Mail::to('satabr1999@gmail.com')->send(new Reminder());
             
+            }
+          
+            $this->call('schedule:run');
+
         }
-        // Mail::to('satabr1999@gmail.com')->send( new Reminder());
-
-
-        $this->info('Remind Cummand Run successfully!');
-
-
    
     
 }
