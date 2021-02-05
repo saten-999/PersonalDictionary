@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Mail;
 use App\User;
 use App\Mail\Reminder;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 class Remind extends Command
 {
     /**
@@ -20,7 +22,7 @@ class Remind extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Remind';
 
     /**
      * Create a new command instance.
@@ -40,21 +42,51 @@ class Remind extends Command
     public function handle()
     {
 
-        while (true) {
+        $this->info('Waiting '. $this->nextMinute(). ' for next run of scheduler');
 
-            $users = User::latest()->get();
+        sleep($this->nextMinute());
 
-            foreach ($users as $user) {
+        $this->runScheduler();
+        // while (true) {
 
-                Mail::to('satabr1999@gmail.com')->send(new Reminder());
+        //     $users = User::latest()->get();
+
+        //     foreach ($users as $user) {
+
+        //         Mail::to('satabr1999@gmail.com')->send(new Reminder());
             
-            }
+        //     }
           
-            // $this->call('schedule:run');
+        //     $this->call('schedule:run');
 
-        }
+        // }
    
     
 }
+
+
+        protected function runScheduler()
+            {
+                
+                $this->info('Running scheduler');
+
+                Mail::to('satabr1999@gmail.com')->send(new Reminder());
+
+                Artisan::call('schedule:run');
+
+                $this->info('completed, sleeping..');
+
+                sleep($this->nextMinute());
+
+                $this->runScheduler();
+            }
+
+
+            protected function nextMinute()
+            {
+                $current = Carbon::now();
+
+                return 120 - $current->second;
+            }
 
 }
