@@ -14,7 +14,7 @@ class DictionaryController extends Controller
      */
     public function index()
     {
-        $words = Dictionary::latest()->get();
+        $words = Dictionary::where('user_id', Auth::user()->id)->latest()->get();
 
         return response()->json($words);
     }
@@ -42,6 +42,7 @@ class DictionaryController extends Controller
             'english' => 'required|unique:dictionaries'
         ]);
         $data['user_id'] = Auth::user()->id;
+
         $words = Dictionary::create($data);
 
         return response()->json($words);

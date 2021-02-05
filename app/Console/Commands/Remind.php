@@ -7,6 +7,7 @@ use Mail;
 use App\User;
 use App\Mail\Reminder;
 use Carbon\Carbon;
+use App\Dictionary;
 use Illuminate\Support\Facades\Artisan;
 class Remind extends Command
 {
@@ -46,52 +47,52 @@ class Remind extends Command
 
         sleep($this->nextMinute());
 
-        $this->runScheduler();
-        // while (true) {
-
-        //     $users = User::latest()->get();
-
-        //     foreach ($users as $user) {
-
-        //         Mail::to('satabr1999@gmail.com')->send(new Reminder());
-            
-        //     }
-          
-        //     $this->call('schedule:run');
-
-        // }
-   
-    
-}
+        $this->runScheduler(); 
+    }
 
 
         protected function runScheduler()
-            {
-                
-                $this->info('Running scheduler');
+        {
+            $users = User::latest()->get();
 
-                    $users = User::latest()->get();
+            foreach ($users as $user) {
 
-                    foreach ($users as $user) {
-        
-                        Mail::to($user->email)->send(new Reminder());
+                $words = Dictionary::where('user_id', $user->id)->get()->toArray();
+
+                if(count($words)>0 && count($words)<=5){
+                    $return = $words ;
+                } 
+                elseif(count($words)>0 && count($words)>5){
+                    $return =array();
+                    $numbers = range(0, count($words)-1);
                     
+                    shuffle($numbers);
+                   
+
+                    for ($i=0; $i <5 ; $i++) { 
+
+                        $return[$i] = $words[$numbers[$i]];
                     }
-                Artisan::call('schedule:run');
-
-                $this->info('completed, sleeping..');
-
-                sleep($this->nextMinute());
-
-                $this->runScheduler();
+                }
+                else{
+                    continue;
+                }
+                Mail::to($user->email)->send(new Reminder($return));
+            
             }
+            Artisan::call('schedule:run');
+
+            sleep($this->nextMinute());
+
+            $this->runScheduler();
+        }
 
 
             protected function nextMinute()
             {
                 $current = Carbon::now();
 
-                return 120 - $current->second;
+                return 86400 - $current->second;
             }
 
 }

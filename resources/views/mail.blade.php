@@ -10,7 +10,7 @@
 
     @foreach ($words as $word)
 
-        <h2>{{ $word->armenian}} - {{ $word->english}} </h2>  
+        <h2>{{ $word['armenian']}} - {{ $word['english']}} </h2>  
         
     @endforeach
 </body>

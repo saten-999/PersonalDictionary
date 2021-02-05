@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
-                <form action="" @submit.prevent="saveData">
+                <form action="" @submit.prevent="saveData" id="reg">
                     <div class="row">
                         <div class="col-5 ">
                             <input type="text" placeholder="Հայերեն" v-model="words.armenian">
@@ -20,17 +20,24 @@
         <div class="row mt-5">
             <div class="col-sm-12 ">
                 <div  class="row " v-for="word in words" :key="word.index">
-                   <div class="col-sm-5">
-                        {{ word.armenian}}
+                   <div class="col-5">
+                        <div class="word">
+                            {{ word.armenian}}
+                        </div>
                     </div>
-                    <div class="col-sm-5">
-                        {{ word.english}}
+                    <div class="col-5">
+                        <div class="word">
+                            {{ word.english}}
+                        </div>
                     </div>
-                    <div class="col-sm-1"> 
-                        <i class="fas fa-pen"></i>
+                    <div class="col-1"> 
+                     
+                         <font-awesome-icon icon="pen" @click="edit()"/>
                     </div>
-                    <div class="col-sm-1">
-                        <i class="fas fa-trash-alt"></i>
+                    <div class="col-1">
+                        
+                        <font-awesome-icon icon="trash-alt" />
+
                      </div>
                 </div>
             </div>
@@ -39,7 +46,7 @@
 </template>
 
 <script>
-import fontawesome from "@fortawesome/fontawesome"
+
 
     export default {
 
@@ -66,6 +73,10 @@ import fontawesome from "@fortawesome/fontawesome"
                         this.words.english = '';
 
                      } );
+            },
+
+            edit(){
+                
             }
         },
         mounted() {
@@ -80,18 +91,25 @@ import fontawesome from "@fortawesome/fontawesome"
 
 
 <style lang="css">
-  input{
+  #reg input{
     width: 100%;
     padding: 2%;
     height: 100%;
   }
 
-  .col-sm-5 {
+  .word {
         border: 1px solid gray;
-    margin: 2vw 0.6vw 0 0.4vw;
-    width: 90%;
-    padding: 1% 0;
-    text-align: center;
+        margin: 2vw 0.6vw 0 0.4vw;
+        width: 90%;
+        padding: 3% 0;
+        text-align: center;
+  }
+  .col-1{
+        margin-top: 2vw ;
+        width: 90%;
+        padding: 1% 0;
+        text-align: center;
+        cursor: pointer;
   }
 
 </style>
