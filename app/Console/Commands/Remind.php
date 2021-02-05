@@ -70,8 +70,13 @@ class Remind extends Command
                 
                 $this->info('Running scheduler');
 
-                Mail::to('satabr1999@gmail.com')->send(new Reminder());
+                    $users = User::latest()->get();
 
+                    foreach ($users as $user) {
+        
+                        Mail::to($user->email)->send(new Reminder());
+                    
+                    }
                 Artisan::call('schedule:run');
 
                 $this->info('completed, sleeping..');

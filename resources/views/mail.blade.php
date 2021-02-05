@@ -7,7 +7,11 @@
     <title>Mail</title>
 </head>
 <body>
-    <h1>Okay</h1>
-    
+
+    @foreach ($words as $word)
+
+        <h2>{{ $word->armenian}} - {{ $word->english}} </h2>  
+        
+    @endforeach
 </body>
 </html>

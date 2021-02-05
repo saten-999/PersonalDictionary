@@ -6,7 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use App\Dictionary;
+use Auth;
 class Reminder extends Mailable
 {
     use Queueable, SerializesModels;
@@ -29,6 +30,19 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Reminder')->view('mail');
+        $words = json_decode(Dictionary::where('user_id', Auth::user()->id)->get());
+
+        if(count($words)>0 && count($words)<=5){
+            $return = $words ;
+        } 
+        elseif(count($words)>0 && count($words)>5){
+            echo "che";
+        }
+        else{
+            return;
+        }
+        return $this->subject('Mail from Reminder')->view('mail',[
+            'words' =>  $return
+        ]);
     }
 }
