@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dictionary', 'DictionaryController@index');
 Route::post('/dictionary', 'DictionaryController@store');
+Route::delete('/dictionary/{id}', 'DictionaryController@destroy');
 
 
 Route::get('/mail', function () {

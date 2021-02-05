@@ -19,7 +19,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-sm-12 ">
-                <div  class="row " v-for="word in words" :key="word.index">
+                <div  class="row " v-for="(word, index) in words" :key="index">
                    <div class="col-5">
                         <div class="word">
                             {{ word.armenian}}
@@ -32,11 +32,11 @@
                     </div>
                     <div class="col-1"> 
                      
-                         <font-awesome-icon icon="pen" @click="edit()"/>
+                         <font-awesome-icon icon="pen" @click="edit(index, word.id)" />
                     </div>
                     <div class="col-1">
                         
-                        <font-awesome-icon icon="trash-alt" />
+                        <font-awesome-icon icon="trash-alt" @click="delate(index, word.id)" />
 
                      </div>
                 </div>
@@ -58,7 +58,8 @@
                        english: String
 
                    } 
-                ]
+                ],
+                edit: 
             }
         },
         methods: {
@@ -75,15 +76,33 @@
                      } );
             },
 
-            edit(){
-                
-            }
+            edit(index, id){
+                console.log(index)
+              
+                // this.words[index]['armenian'] =  
+            },
+
+            delate(index, id){
+                var del= confirm("Do you want to delete this word")
+
+                if (del == true) {
+                     this.words.splice(index,1)
+
+                    axios.delete('/dictionary/'+id)
+                        .then(response => {
+                        
+                            console.log(response)
+                        } );
+                }                         
+            
+            },
+
         },
         mounted() {
              axios.get('/dictionary')
                   .then(response => ( this.words = response.data ));
 
-                  console.log(this.words)
+                
         }
     }
 </script>

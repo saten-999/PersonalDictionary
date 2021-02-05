@@ -11955,91 +11955,9 @@ module.exports = {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DictionaryComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      words: [{
-        armenian: String,
-        english: String
-      }]
-    };
-  },
-  methods: {
-    saveData: function saveData() {
-      var _this = this;
-
-      axios.post('/dictionary', {
-        armenian: this.words.armenian,
-        english: this.words.english
-      }).then(function (response) {
-        _this.words.unshift(response.data);
-
-        _this.words.armenian = '';
-        _this.words.english = '';
-      });
-    },
-    edit: function edit() {}
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    axios.get('/dictionary').then(function (response) {
-      return _this2.words = response.data;
-    });
-    console.log(this.words);
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\resources\\js\\components\\DictionaryComponent.vue: Unexpected token (63:8)\n\n\u001b[0m \u001b[90m 61 | \u001b[39m            ]\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 62 | \u001b[39m            edit\u001b[33m:\u001b[39m \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 63 | \u001b[39m        }\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 64 | \u001b[39m    }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 65 | \u001b[39m    methods\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 66 | \u001b[39m        saveData(){\u001b[0m\n    at Parser._raise (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:799:17)\n    at Parser.raiseWithData (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:792:17)\n    at Parser.raise (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:786:17)\n    at Parser.unexpected (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9089:16)\n    at Parser.parseExprAtom (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:10416:20)\n    at Parser.parseExprSubscripts (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9976:23)\n    at Parser.parseUpdate (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9956:21)\n    at Parser.parseMaybeUnary (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9945:17)\n    at Parser.parseExprOps (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9815:23)\n    at Parser.parseMaybeConditional (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9789:23)\n    at Parser.parseMaybeAssign (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9752:21)\n    at C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9718:39\n    at Parser.allowInAnd (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:11448:12)\n    at Parser.parseMaybeAssignAllowIn (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9718:17)\n    at Parser.parseObjectProperty (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:10961:101)\n    at Parser.parseObjPropValue (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:10986:100)\n    at Parser.parsePropertyDefinition (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:10910:10)\n    at Parser.parseObjectLike (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:10802:25)\n    at Parser.parseExprAtom (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:10332:23)\n    at Parser.parseExprSubscripts (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9976:23)\n    at Parser.parseUpdate (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9956:21)\n    at Parser.parseMaybeUnary (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9945:17)\n    at Parser.parseExprOps (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9815:23)\n    at Parser.parseMaybeConditional (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9789:23)\n    at Parser.parseMaybeAssign (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9752:21)\n    at Parser.parseExpressionBase (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9696:23)\n    at C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9690:39\n    at Parser.allowInAnd (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:11442:16)\n    at Parser.parseExpression (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:9690:17)\n    at Parser.parseReturnStatement (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:11946:28)\n    at Parser.parseStatementContent (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:11625:21)\n    at Parser.parseStatement (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:11577:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:12159:25)\n    at Parser.parseBlockBody (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:12145:10)\n    at Parser.parseBlock (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:12129:10)\n    at Parser.parseFunctionBody (C:\\Users\\asatenik\\Desktop\\Saten\\BBa\\node_modules\\@babel\\parser\\lib\\index.js:11108:24)");
 
 /***/ }),
 
@@ -48365,8 +48283,8 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-sm-12 " },
-        _vm._l(_vm.words, function(word) {
-          return _c("div", { key: word.index, staticClass: "row " }, [
+        _vm._l(_vm.words, function(word, index) {
+          return _c("div", { key: index, staticClass: "row " }, [
             _c("div", { staticClass: "col-5" }, [
               _c("div", { staticClass: "word" }, [
                 _vm._v(
@@ -48395,7 +48313,7 @@ var render = function() {
                   attrs: { icon: "pen" },
                   on: {
                     click: function($event) {
-                      return _vm.edit()
+                      return _vm.edit(index, word.id)
                     }
                   }
                 })
@@ -48406,7 +48324,16 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-1" },
-              [_c("font-awesome-icon", { attrs: { icon: "trash-alt" } })],
+              [
+                _c("font-awesome-icon", {
+                  attrs: { icon: "trash-alt" },
+                  on: {
+                    click: function($event) {
+                      return _vm.delate(index, word.id)
+                    }
+                  }
+                })
+              ],
               1
             )
           ])
