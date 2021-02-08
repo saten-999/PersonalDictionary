@@ -78,9 +78,17 @@ class DictionaryController extends Controller
      * @param  \App\Dictionary  $dictionary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dictionary $dictionary)
+    public function update(Request $request,$id)
     {
-        //
+        $data = $request->validate([
+            'armenian' => 'required',
+            'english' => 'required'
+        ]);
+        $data['user_id'] = Auth::user()->id;
+
+        $words = Dictionary::find($id)->update($data);
+
+        return response()->json($words);
     }
 
     /**

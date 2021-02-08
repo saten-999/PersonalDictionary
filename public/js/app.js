@@ -12006,6 +12006,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -12029,8 +12054,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.words.english = '';
       });
     },
-    edit: function edit(index, id) {
-      console.log(index); // this.words[index]['armenian'] =  
+    show_edit_view: function show_edit_view(index, id) {
+      document.getElementsByClassName("modal")[index].style.display = "block";
+    },
+    close: function close(index) {
+      document.getElementsByClassName("modal")[index].style.display = "none";
     },
     delate: function delate(index, id) {
       var del = confirm("Do you want to delete this word");
@@ -12041,13 +12069,28 @@ __webpack_require__.r(__webpack_exports__);
           console.log(response);
         });
       }
+    },
+    editData: function editData(index, id) {
+      var _this2 = this;
+
+      axios.put('/dictionary/' + id, {
+        armenian: this.words[index].armenian,
+        english: this.words[index].english
+      }).then(function (response) {
+        console.log(response.data);
+
+        _this2.close(index); //  this.words.unshift(response.data);
+        // this.words.armenian = '';
+        // this.words.english = '';
+
+      });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get('/dictionary').then(function (response) {
-      return _this2.words = response.data;
+      return _this3.words = response.data;
     });
   }
 });
@@ -16508,7 +16551,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#reg input{\n  width: 100%;\n  padding: 2%;\n  height: 100%;\n}\n.word {\n      border: 1px solid gray;\n      margin: 2vw 0.6vw 0 0.4vw;\n      width: 90%;\n      padding: 3% 0;\n      text-align: center;\n}\n.col-1{\n      margin-top: 2vw ;\n      width: 90%;\n      padding: 1% 0;\n      text-align: center;\n      cursor: pointer;\n}\n\n", ""]);
+exports.push([module.i, "\n#reg input{\n    width: 100%;\n    padding: 2%;\n    height: 100%;\n}\n.word {\n        border: 1px solid gray;\n        margin: 2vw 0.6vw 0 0.4vw;\n        width: 90%;\n        padding: 3% 0;\n        text-align: center;\n}\n.col-1{\n        margin-top: 2vw ;\n        width: 90%;\n        padding: 1% 0;\n        text-align: center;\n        cursor: pointer;\n}\n.modal {\nposition: fixed; /* Stay in place */\nz-index: 1; /* Sit on top */\npadding-top: 100px; /* Location of the box */\nleft: 0;\ntop: 0;\nwidth: 100%; /* Full width */\nheight: 100%; /* Full height */\noverflow: auto; /* Enable scroll if needed */\nbackground-color: rgb(0,0,0); /* Fallback color */\nbackground-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n}\n\n/* Modal Content */\n.modal-content {\nbackground-color: #fefefe;\nmargin: auto;\npadding: 20px;\nborder: 1px solid #888;\nwidth: 80%;\n}\n\n/* The Close Button */\n.close {\ncolor: #aaaaaa;\nfloat: right;\nfont-size: 28px;\nfont-weight: bold;\n}\n.close:hover,\n.close:focus {\ncolor: #000;\ntext-decoration: none;\ncursor: pointer;\n}\n\n", ""]);
 
 // exports
 
@@ -48303,140 +48346,236 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c(
-          "form",
-          {
-            attrs: { action: "", id: "reg" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.saveData($event)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-sm-12" }, [
+          _c(
+            "form",
+            {
+              attrs: { action: "", id: "reg" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.saveData($event)
+                }
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-5 " }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.words.armenian,
-                      expression: "words.armenian"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Հայերեն" },
-                  domProps: { value: _vm.words.armenian },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-5 " }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.words.armenian,
+                        expression: "words.armenian"
                       }
-                      _vm.$set(_vm.words, "armenian", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-5" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.words.english,
-                      expression: "words.english"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "English" },
-                  domProps: { value: _vm.words.english },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    ],
+                    attrs: { type: "text", placeholder: "Հայերեն" },
+                    domProps: { value: _vm.words.armenian },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.words, "armenian", $event.target.value)
                       }
-                      _vm.$set(_vm.words, "english", $event.target.value)
                     }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-5" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.words.english,
+                        expression: "words.english"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "English" },
+                    domProps: { value: _vm.words.english },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.words, "english", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.words, function(word, index) {
+        return _c("div", { key: index }, [
+          _c("div", { staticClass: "row mt-5" }, [
+            _c("div", { staticClass: "col-sm-12 " }, [
+              _c("div", { staticClass: "row " }, [
+                _c("div", { staticClass: "col-5" }, [
+                  _c("div", { staticClass: "word" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(word.armenian) +
+                        "\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-5" }, [
+                  _c("div", { staticClass: "word" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(word.english) +
+                        "\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-1" },
+                  [
+                    _c("font-awesome-icon", {
+                      attrs: { icon: "pen" },
+                      on: {
+                        click: function($event) {
+                          return _vm.show_edit_view(index, word.id)
+                        }
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-1" },
+                  [
+                    _c("font-awesome-icon", {
+                      attrs: { icon: "trash-alt" },
+                      on: {
+                        click: function($event) {
+                          return _vm.delate(index, word.id)
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
             ])
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row mt-5" }, [
-      _c(
-        "div",
-        { staticClass: "col-sm-12 " },
-        _vm._l(_vm.words, function(word, index) {
-          return _c("div", { key: index, staticClass: "row " }, [
-            _c("div", { staticClass: "col-5" }, [
-              _c("div", { staticClass: "word" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(word.armenian) +
-                    "\n                    "
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row modal" }, [
+            _c("div", { staticClass: "col-12 modal-content" }, [
+              _c("div", { staticClass: "w-100" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass: "close",
+                    on: {
+                      click: function($event) {
+                        return _vm.close(index)
+                      }
+                    }
+                  },
+                  [_vm._v("×")]
                 )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-5" }, [
-              _c("div", { staticClass: "word" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(word.english) +
-                    "\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-1" },
-              [
-                _c("font-awesome-icon", {
-                  attrs: { icon: "pen" },
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "my-3",
+                  attrs: { action: "", id: "reg" },
                   on: {
-                    click: function($event) {
-                      return _vm.edit(index, word.id)
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.editData(index, word.id)
                     }
                   }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-1" },
-              [
-                _c("font-awesome-icon", {
-                  attrs: { icon: "trash-alt" },
-                  on: {
-                    click: function($event) {
-                      return _vm.delate(index, word.id)
-                    }
-                  }
-                })
-              ],
-              1
-            )
+                },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-5 " }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: word.armenian,
+                            expression: "word.armenian"
+                          }
+                        ],
+                        attrs: { type: "text", placeholder: "Հայերեն" },
+                        domProps: { value: word.armenian },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(word, "armenian", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-5" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: word.english,
+                            expression: "word.english"
+                          }
+                        ],
+                        attrs: { type: "text", placeholder: "English" },
+                        domProps: { value: word.english },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(word, "english", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1, true)
+                  ])
+                ]
+              )
+            ])
           ])
-        }),
-        0
-      )
-    ])
-  ])
+        ])
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("input", { attrs: { type: "submit", value: "Save" } })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

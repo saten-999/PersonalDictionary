@@ -20,23 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/dictionary', 'DictionaryController@index');
 Route::post('/dictionary', 'DictionaryController@store');
+Route::put('/dictionary/{id}', 'DictionaryController@update');
 Route::delete('/dictionary/{id}', 'DictionaryController@destroy');
 
 
-Route::get('/mail', function () {
-
-    $numbers = range(0, 15);
-                    shuffle($numbers);
-                   
-                    $return = array_slice($numbers, 0, 5);
-    // $user = User::latest()->get();
-
-    // foreach ($user as $key => $value) {
-
-    //     Mail::to('satabr1999@gmail.com')->send( new App\Mail\Reminder());
-
-    // }
-  
-});
