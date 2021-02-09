@@ -10,7 +10,8 @@
     <title>Personal Dictionary</title>
 
     <!-- Scripts -->
-    <script src="js/app.js" defer></script>
+    {{-- <script src="js/app.js" defer></script> --}}
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
