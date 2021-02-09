@@ -8,3 +8,98 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+body, nav, .dropdown-menu{
+    background-color:#f3f2f2 ;
+    // color: #b47775;
+
+}
+nav{
+    border-bottom:1px solid #b47775 ;
+}
+nav a{
+   color: #8d4f48 ;
+}
+nav a:hover{
+    color: #8d4f48 ;
+ }
+#register,#login{
+    
+    color:#8d4f48;
+}
+
+.card-header{
+    background-color:#f3f2f2 ;
+    border-bottom:1px solid #b47775 ;
+}
+#register button{
+    background-color: #f3f2f2; 
+    color: #3B2218 ; 
+    border: 1px solid #3B2218
+}
+#login button{
+    background-color: #CFAEA0; 
+    color: #3B2218 ; 
+    border: 1px solid #3B2218
+}
+
+#welcome{
+
+
+    .top-right {
+        width: 100%;
+        padding: 1vw 0;
+        position: absolute;
+        top: 0;
+        border-bottom:1px solid #b47775 ;
+        font-weight: 200;
+    }
+
+    .content {
+        margin-top: 30vh;
+        text-align: center;
+    }
+    .links  a {
+        color: #8d4f48 ;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        float: right;
+    }
+
+    .content{
+        color:  #8d4f48 ;
+       font-weight: 400;
+       font-size: 1.5vw;
+
+    }
+    .content a{
+        color: #8d4f48 ;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .title{
+        font-size: 4vw
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .title{
+            font-size: 6vw
+        }
+        .content{
+            font-size: 2.5vw;
+
+        }
+    }
+    @media only screen and (max-width: 550px) {
+        .title{
+            font-size: 8vw
+        }
+        .content{
+            font-size: 3.5vw;
+
+        }
+    }
+}

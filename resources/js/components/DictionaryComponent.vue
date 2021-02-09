@@ -44,7 +44,7 @@
                 </div>
             </div>
         
-            <div class="row modal"  >
+            <div class="row modal" >
                 <div class="col-12 modal-content" >     
                     <div class="w-100">
                         <span class="close" @click="close(index)" >&times;</span>
@@ -160,7 +160,7 @@
     }
 
     .word {
-            border: 1px solid gray;
+            border: 2px solid gray;
             margin: 2vw 0.6vw 0 0.4vw;
             width: 90%;
             padding: 3% 0;
@@ -190,11 +190,11 @@
 
     /* Modal Content */
     .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+        background-color:#f3f2f2 ;
+        border:1px solid #b47775 ;
+        margin: auto;
+        padding: 2.5vw;
+        width: 80%;
     }
 
     /* The Close Button */
