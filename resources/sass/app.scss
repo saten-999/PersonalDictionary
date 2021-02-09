@@ -1,5 +1,3 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
@@ -9,7 +7,7 @@
 
 
 body, nav, .dropdown-menu{
-    background-color:#f3f2f2 ;
+    background-color: $back ;
     // color: #b47775;
 
 }
@@ -17,48 +15,59 @@ nav{
     border-bottom:1px solid #b47775 ;
 }
 nav a{
-   color: #8d4f48 ;
+   color: $text ;
 }
 nav a:hover{
-    color: #8d4f48 ;
+    color: $text ;
  }
 #register,#login{
     
-    color:#8d4f48;
+    color:$text;
 }
-
 
 .card-header{
-    background-color:#f3f2f2 ;
-    border-bottom:1px solid #b47775 ;
+    background-color:$back ;
+    border-bottom:1px solid $borderbottom ;
 }
 #register button{
-    background-color: #f3f2f2; 
+    background-color: $back; 
     color: #3B2218 ; 
-    border: 1px solid #3B2218
+    border: 1px solid #745d54
 }
 #login button{
     background-color: #CFAEA0; 
     color: #3B2218 ; 
-    border: 1px solid #3B2218
+    border: 1px solid #745d54
 }
 .reset button{
     background-color: #CFAEA0; 
     color: #3B2218 ; 
-    border: 1px solid #3B2218
+    border: 1px solid #745d54
+}
+.reset button:hover{
+    background-color: white; 
+    color: #3B2218 ; 
+    border: 1px solid #745d54
+}
+
+.reset {
+
+    color: $text;
+    text-decoration: none;
 }
 #login a{
-    color: #8d4f48;
+    color: $text;
     text-decoration: none;
 }
 
 #welcome{
+
     .top-right {
         width: 100%;
         padding: 1vw 0;
         position: absolute;
         top: 0;
-        border-bottom:1px solid #b47775 ;
+        border-bottom:1px solid $borderbottom ;
         font-weight: 200;
     }
 
@@ -67,7 +76,7 @@ nav a:hover{
         text-align: center;
     }
     .links  a {
-        color: #8d4f48 ;
+        color: $text ;
         padding: 0 25px;
         font-size: 13px;
         font-weight: 600;
@@ -78,13 +87,13 @@ nav a:hover{
     }
 
     .content{
-        color:  #8d4f48 ;
+        color:  $text ;
        font-weight: 400;
        font-size: 1.5vw;
 
     }
     .content a{
-        color: #8d4f48 ;
+        color: $text ;
         font-weight: 600;
         text-decoration: none;
     }
@@ -111,3 +120,87 @@ nav a:hover{
         }
     }
 }
+
+
+//form
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid $bordercolor;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .form-control {
+      transition: none;
+    }
+  }
+  .form-control::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+  
+  .form-control:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #495057;
+  }
+  
+  .form-control:focus {
+    color: $text;
+    font-weight: 600;
+    background-color: #fff;
+    border-color: $bordercolor;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem $back;
+  }
+  
+  .form-control::-moz-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .form-control:-ms-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .form-control:disabled,
+  .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+  
+  input[type=date].form-control,
+  input[type=time].form-control,
+  input[type=datetime-local].form-control,
+  input[type=month].form-control {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+  
+  select.form-control:focus::-ms-value {
+    color: #495057;
+    background-color: #fff;
+  }
+  
+  .form-control-file,
+  .form-control-range {
+    display: block;
+    width: 100%;
+  }

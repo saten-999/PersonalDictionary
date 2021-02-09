@@ -157,10 +157,11 @@
         width: 100%;
         padding: 2%;
         height: 100%;
+        /* border: 2px solid #b47775; */
     }
 
     .word {
-            border: 2px solid gray;
+            border: 2px solid #b47775;
             margin: 2vw 0.6vw 0 0.4vw;
             width: 90%;
             padding: 3% 0;
@@ -172,6 +173,7 @@
             padding: 1% 0;
             text-align: center;
             cursor: pointer;
+            color: #b47775;
     }
 
 
