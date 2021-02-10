@@ -10967,6 +10967,18 @@ nav a:hover {
   color: #8d4f48;
 }
 
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #b47775;
+  border-radius: 0.25rem;
+}
+
 .card-header {
   background-color: #e4d8d4;
   border-bottom: 1px solid #b47775;

@@ -51316,7 +51316,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control ",
-                    attrs: { type: "text", placeholder: "Հայերեն" },
+                    attrs: { type: "text", placeholder: "Armenian" },
                     domProps: { value: _vm.words.armenian },
                     on: {
                       keydown: function($event) {

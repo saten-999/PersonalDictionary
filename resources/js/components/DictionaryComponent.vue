@@ -5,7 +5,7 @@
                 <form action="" @submit.prevent="saveData" id="reg">
                     <div class="row">
                         <div class="col-5 " >
-                            <input type="text" class="form-control "  placeholder="Հայերեն" v-model="words.armenian"  @keydown="errors.armenian = null">
+                            <input type="text" class="form-control "  placeholder="Armenian" v-model="words.armenian"  @keydown="errors.armenian = null">
                             <span v-if="errors.armenian">
                                 {{errors.armenian[0]}}
                             </span>
@@ -147,7 +147,7 @@
                 axios.put('/dictionary/'+id,{
                     armenian: this.words[index].armenian,
                     english: this.words[index].english
-            })
+                    })
                      .then(response => {
                      })
                      .catch(error => {
