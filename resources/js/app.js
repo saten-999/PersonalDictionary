@@ -10,12 +10,12 @@ window.Vue = require('vue');
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPen ,faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+import { faPen ,faTrashAlt, faBars} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueSimpleAlert from "vue-simple-alert";
 
 Vue.use(VueSimpleAlert);
-library.add(faPen,faTrashAlt )
+library.add(faPen,faTrashAlt,faBars )
 
 
 
@@ -23,10 +23,6 @@ library.add(faPen,faTrashAlt )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('dictionary-content', require('./components/DictionaryComponent.vue').default);
-
-
-
-
 
 
 
