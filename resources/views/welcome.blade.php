@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Vocabulary Reminder</title>
-
+        <link rel="shortcut icon" href="../img/back1.jpg">
         <link href="css/app.css" rel="stylesheet">
  
     </head>

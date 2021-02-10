@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Vocabulary Reminder</title>
-
+    <link rel="shortcut icon" href="../img/back1.jpg">
     <!-- Scripts -->
     <script src="../js/app.js" defer></script>
     <link href="../css/app.css" rel="stylesheet">

@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mail</title>
-    <script src="../js/app.js" defer></script>
     <link href="../css/app.css" rel="stylesheet">
 </head>
 <body>
+    <ul style=" font-size: 20px;">
+        @foreach ($words as $word)
 
-    @foreach ($words as $word)
-
-        <h2>{{ $word['armenian']}} - {{ $word['english']}} </h2>  
+            <li>{{ $word['armenian']}} - {{ $word['english']}} </li>  
         
-    @endforeach
+        @endforeach
+    </ul>
+
+    
 </body>
 </html>

@@ -21,9 +21,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dictionary', 'DictionaryController@index');
-Route::post('/dictionary', 'DictionaryController@store');
-Route::put('/dictionary/{id}', 'DictionaryController@update');
-Route::delete('/dictionary/{id}', 'DictionaryController@destroy');
 
 
+
+Route::group(['middleware' => 'auth'], function () {
+    
+    Route::get('/dictionary', 'DictionaryController@index');
+    Route::post('/dictionary', 'DictionaryController@store');
+    Route::put('/dictionary/{id}', 'DictionaryController@update');
+    Route::delete('/dictionary/{id}', 'DictionaryController@destroy');
+});
