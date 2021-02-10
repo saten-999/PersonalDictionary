@@ -47,6 +47,8 @@ class DictionaryController extends Controller
 
         return response()->json($words);
         
+
+    
     }
 
     /**

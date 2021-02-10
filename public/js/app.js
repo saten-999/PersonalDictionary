@@ -12031,13 +12031,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       words: [{
         armenian: String,
         english: String
-      }]
+      }],
+      errors: Object
     };
   },
   methods: {
@@ -12052,6 +12065,10 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.words.armenian = '';
         _this.words.english = '';
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this.errors = error.response.data.errors;
+        }
       });
     },
     show_edit_view: function show_edit_view(index, id) {
@@ -12077,13 +12094,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.put('/dictionary/' + id, {
         armenian: this.words[index].armenian,
         english: this.words[index].english
-      }).then(function (response) {
-        console.log(response.data);
-
-        _this3.close(index); //  this.words.unshift(response.data);
-        // this.words.armenian = '';
-        // this.words.english = '';
-
+      }).then(function (response) {})["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this3.errors = error.response.data.errors;
+        }
       });
     }
   },
@@ -16552,7 +16566,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#reg input{\n      width: 100%;\n      padding: 2%;\n      height: 100%;\n      border: 2px solid #b47775;\n      border-radius: 0.25rem;\n}\n#reg input:focus{\n       border: 2px solid #dfada8;\n}\ninput[type=submit]{\n      background-color: #f3f2f2; \n      color: #3B2218 ; \n      border: 1px solid #745d54\n}\ninput[type=submit]:focus{\n      border: 2px solid #dfada8;\n}\n.word {\n          border: 2px solid #b47775;\n          margin: 2vw 0.6vw 0 0.4vw;\n          width: 90%;\n          padding: 3% 0;\n          text-align: center;\n          border-radius: 0.25rem;\n}\n.col-1{\n          margin-top: 2vw ;\n          width: 90%;\n          padding: 1% 0;\n          text-align: center;\n          cursor: pointer;\n          color: #b47775;\n}\n.modal {\n      position: fixed; /* Stay in place */\n      z-index: 1; /* Sit on top */\n      padding-top: 100px; /* Location of the box */\n      left: 0;\n      top: 0;\n      width: 100%; /* Full width */\n      height: 100%; /* Full height */\n      overflow: auto; /* Enable scroll if needed */\n      background-color: rgb(0,0,0); /* Fallback color */\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n}\n\n  /* Modal Content */\n.modal-content {\n      background-color:#f3f2f2 ;\n      border:1px solid #b47775 ;\n      margin: auto;\n      padding: 2.5vw;\n      width: 80%;\n}\n\n  /* The Close Button */\n.close {\n      color: #aaaaaa;\n      float: right;\n      font-size: 28px;\n      font-weight: bold;\n}\n.close:hover,\n  .close:focus {\n      color: #000;\n      text-decoration: none;\n      cursor: pointer;\n}\n.swal2-styled.swal2-confirm{\n  background-color: #b47775;\n}\n.swal2-styled:focus{\n    box-shadow: none;\n}\n\n", ""]);
+exports.push([module.i, "\n#reg input{\n    width: 100%;\n    padding: 2%;\n    border: 2px solid #b47775;\n    border-radius: 0.25rem;\n}\n.word {\n        border: 2px solid #b47775;\n        margin: 2vw 0.6vw 0 0.4vw;\n        width: 90%;\n        padding: 3% 0;\n        text-align: center;\n        border-radius: 0.25rem;\n}\n.col-1{\n        margin-top: 2vw ;\n        width: 90%;\n        padding: 1% 0;\n        text-align: center;\n        cursor: pointer;\n        color: #b47775;\n}\n.modal {\n    position: fixed; \n    z-index: 1; \n    padding-top: 100px;\n    margin: 0;\n    top: 0;\n    width: 100%; \n    height: 100%; \n    overflow: auto; \n    background-color: rgb(0,0,0); \n    background-color: rgba(0,0,0,0.4);\n}\n.modal-content {\n    background-color:#f3f2f2 ;\n    border:1px solid #b47775 ;\n    margin: auto;\n    padding: 2.5vw;\n    width: 80%;\n}\n.close {\n    color: #aaaaaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n.close:hover,\n.close:focus {\n    color: #000;\n    text-decoration: none;\n    cursor: pointer;\n}\n.swal2-styled.swal2-confirm{\n    background-color: #b47775;\n}\n.swal2-styled:focus{\n    box-shadow: none;\n}\nspan{\n    color: red;\n}\n@media only screen and (max-width: 500px) {\n.modal-content{\n        width: 95%\n}\n#reg input[type=submit]{\n        font-size: 3vw;\n}\n} \n\n", ""]);
 
 // exports
 
@@ -51305,6 +51319,9 @@ var render = function() {
                     attrs: { type: "text", placeholder: "Հայերեն" },
                     domProps: { value: _vm.words.armenian },
                     on: {
+                      keydown: function($event) {
+                        _vm.errors.armenian = null
+                      },
                       input: function($event) {
                         if ($event.target.composing) {
                           return
@@ -51312,7 +51329,17 @@ var render = function() {
                         _vm.$set(_vm.words, "armenian", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.armenian
+                    ? _c("span", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.armenian[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-5" }, [
@@ -51329,6 +51356,9 @@ var render = function() {
                     attrs: { type: "text", placeholder: "English" },
                     domProps: { value: _vm.words.english },
                     on: {
+                      keydown: function($event) {
+                        _vm.errors.english = null
+                      },
                       input: function($event) {
                         if ($event.target.composing) {
                           return
@@ -51336,7 +51366,17 @@ var render = function() {
                         _vm.$set(_vm.words, "english", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.english
+                    ? _c("span", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.english[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _vm._m(0)
@@ -51448,9 +51488,12 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control ",
-                        attrs: { type: "text", placeholder: "Հայերեն" },
+                        attrs: { type: "text", placeholder: "Armenian" },
                         domProps: { value: word.armenian },
                         on: {
+                          keydown: function($event) {
+                            _vm.errors.armenian = null
+                          },
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -51458,7 +51501,17 @@ var render = function() {
                             _vm.$set(word, "armenian", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.armenian
+                        ? _c("span", [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.errors.armenian[0]) +
+                                "\n                            "
+                            )
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-5" }, [
@@ -51475,6 +51528,9 @@ var render = function() {
                         attrs: { type: "text", placeholder: "English" },
                         domProps: { value: word.english },
                         on: {
+                          keydown: function($event) {
+                            _vm.errors.english = null
+                          },
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -51482,7 +51538,17 @@ var render = function() {
                             _vm.$set(word, "english", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.english
+                        ? _c("span", [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.errors.english[0]) +
+                                "\n                            "
+                            )
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _vm._m(1, true)
@@ -51503,7 +51569,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2" }, [
-      _c("input", { attrs: { type: "submit", value: "Save" } })
+      _c("input", {
+        staticClass: "form-control ",
+        attrs: { type: "submit", value: "Save" }
+      })
     ])
   },
   function() {
@@ -51511,7 +51580,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2" }, [
-      _c("input", { attrs: { type: "submit", value: "Save" } })
+      _c("input", {
+        staticClass: "form-control ",
+        attrs: { type: "submit", value: "Save" }
+      })
     ])
   }
 ]

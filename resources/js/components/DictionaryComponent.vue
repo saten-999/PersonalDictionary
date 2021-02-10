@@ -5,13 +5,19 @@
                 <form action="" @submit.prevent="saveData" id="reg">
                     <div class="row">
                         <div class="col-5 " >
-                            <input type="text" class="form-control "  placeholder="Հայերեն" v-model="words.armenian">
+                            <input type="text" class="form-control "  placeholder="Հայերեն" v-model="words.armenian"  @keydown="errors.armenian = null">
+                            <span v-if="errors.armenian">
+                                {{errors.armenian[0]}}
+                            </span>
                         </div>
                         <div class="col-5">
-                            <input type="text" class="form-control " placeholder="English" v-model="words.english">
+                            <input type="text" class="form-control " placeholder="English" v-model="words.english" @keydown="errors.english = null">
+                            <span v-if="errors.english">
+                                {{errors.english[0]}}
+                            </span>
                         </div>
                         <div class="col-2">
-                            <input type="submit" value="Save">
+                            <input type="submit" class="form-control " value="Save">
                         </div>
                     </div>
                 </form>
@@ -53,13 +59,19 @@
                     <form action="" @submit.prevent="editData(index, word.id)" id="reg" class="my-3">
                         <div class="row">
                             <div class="col-5 ">
-                                <input type="text" class="form-control " placeholder="Հայերեն"   v-model="word.armenian">
+                                <input type="text" class="form-control " placeholder="Armenian"   v-model="word.armenian" @keydown="errors.armenian = null">
+                                <span v-if="errors.armenian">
+                                {{errors.armenian[0]}}
+                                </span>
                             </div>
                             <div class="col-5">
-                                <input type="text" class="form-control " placeholder="English"   v-model="word.english">
+                                <input type="text" class="form-control " placeholder="English"   v-model="word.english" @keydown="errors.english = null">
+                                <span v-if="errors.english">
+                                {{errors.english[0]}}
+                                </span>
                             </div>
                             <div class="col-2">
-                                <input type="submit"  value="Save">
+                                <input type="submit"  class="form-control " value="Save">
                             </div>
                         </div>
                     </form>
@@ -83,6 +95,7 @@
                        english: String,
                    } 
                 ],
+                errors: Object,
                 
             }
         },
@@ -91,15 +104,23 @@
                 axios.post('/dictionary',{
                     armenian: this.words.armenian,
                     english: this.words.english
-            })
-                     .then(response => {
+                    })
+                    .then(response => {
                         this.words.unshift(response.data);
                         this.words.armenian = '';
                         this.words.english = '';
 
-                     } );
+                     })
+                    .catch(error => {
+                        if (error.response.status == 422){
+                            this.errors = error.response.data.errors
+                        }
+                        
+                    })
+                    
+              
+                   
             },
-
             show_edit_view(index, id){
                 document.getElementsByClassName("modal")[index].style.display = "block";
                 
@@ -108,7 +129,6 @@
                 document.getElementsByClassName("modal")[index].style.display = "none";
 
             },
-
             delate(index, id){
                
                 this.$confirm("Do you want to delete this word?").then(() => {
@@ -120,13 +140,8 @@
                         
                             console.log(response)
                         } );
-                });
-
-
-                             
-            
+                });     
             },
-
             editData(index,id){
 
                 axios.put('/dictionary/'+id,{
@@ -134,13 +149,13 @@
                     english: this.words[index].english
             })
                      .then(response => {
-                         console.log(response.data)
-                         this.close(index)
-                        //  this.words.unshift(response.data);
-                        // this.words.armenian = '';
-                        // this.words.english = '';
+                     })
+                     .catch(error => {
+                        if (error.response.status == 422){
+                            this.errors = error.response.data.errors
+                        }
+                    });
 
-                     } );
             },
 
         },
@@ -159,21 +174,9 @@
     #reg input{
         width: 100%;
         padding: 2%;
-        height: 100%;
         border: 2px solid #b47775;
         border-radius: 0.25rem;
-    }
-    #reg input:focus{
-         border: 2px solid #dfada8;
-    }
-    input[type=submit]{
-        background-color: #f3f2f2; 
-        color: #3B2218 ; 
-        border: 1px solid #745d54
-    }
-    input[type=submit]:focus{
-        border: 2px solid #dfada8;
-    }
+    }   
 
     .word {
             border: 2px solid #b47775;
@@ -191,22 +194,18 @@
             cursor: pointer;
             color: #b47775;
     }
-
-
     .modal {
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 100px;
+        margin: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
     }
-
-    /* Modal Content */
     .modal-content {
         background-color:#f3f2f2 ;
         border:1px solid #b47775 ;
@@ -215,7 +214,6 @@
         width: 80%;
     }
 
-    /* The Close Button */
     .close {
         color: #aaaaaa;
         float: right;
@@ -230,11 +228,25 @@
         cursor: pointer;
     }
 
-  .swal2-styled.swal2-confirm{
-    background-color: #b47775;
-  }
-  .swal2-styled:focus{
-      box-shadow: none;
-  }
+    .swal2-styled.swal2-confirm{
+        background-color: #b47775;
+    }
+    .swal2-styled:focus{
+        box-shadow: none;
+    }
+    span{
+        color: red;
+    }
+
+
+    @media only screen and (max-width: 500px) {
+        .modal-content{
+            width: 95%
+        } 
+        #reg input[type=submit]{
+            font-size: 3vw;
+        }
+        
+    } 
 
 </style>
