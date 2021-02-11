@@ -29,6 +29,6 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Reminder')->view('mail');
+        return $this->subject('Mail from Vocabulary Reminder')->view('mail');
     }
 }
