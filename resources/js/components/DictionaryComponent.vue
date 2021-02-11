@@ -149,6 +149,7 @@
                     english: this.words[index].english
                     })
                      .then(response => {
+                          this.close(index)
                      })
                      .catch(error => {
                         if (error.response.status == 422){

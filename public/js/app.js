@@ -12094,7 +12094,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.put('/dictionary/' + id, {
         armenian: this.words[index].armenian,
         english: this.words[index].english
-      }).then(function (response) {})["catch"](function (error) {
+      }).then(function (response) {
+        _this3.close(index);
+      })["catch"](function (error) {
         if (error.response.status == 422) {
           _this3.errors = error.response.data.errors;
         }
