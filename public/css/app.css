@@ -11233,3 +11233,22 @@ select.form-control:focus::-ms-value {
   color: #212529;
 }
 
+#mail {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#mail img {
+  width: 100%;
+}
+
+#mail p {
+  margin-left: 7vw;
+}
+
+#mail span {
+  color: red;
+  margin-left: 7vw;
+}
+
