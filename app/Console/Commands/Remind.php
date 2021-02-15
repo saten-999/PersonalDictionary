@@ -92,7 +92,7 @@ class Remind extends Command
             {
                 $current = Carbon::now();
 
-                return 180 - $current->second;
+                return 43200 - $current->second;
             }
 
 }
