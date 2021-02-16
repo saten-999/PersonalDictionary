@@ -43,12 +43,16 @@ class Remind extends Command
     public function handle()
     {
 
-        $this->info('Waiting '. $this->nextMinute(). ' for next run of scheduler');
+        
 
         // sleep($this->nextMinute());
-        sleep(120);
+        sleep(60);
 
-        // $this->runScheduler(); 
+        
+
+        $this->runScheduler(); 
+
+        $this->info('Done ');
     }
 
 
@@ -81,7 +85,7 @@ class Remind extends Command
                 Mail::to($user->email)->send(new Reminder($return));
             
             }
-            Artisan::call('schedule:run');
+            // Artisan::call('schedule:run');
 
             // sleep($this->nextMinute());
 
