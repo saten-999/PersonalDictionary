@@ -12043,6 +12043,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -51335,11 +51356,20 @@ var render = function() {
                   _vm._v(" "),
                   _vm.errors.armenian
                     ? _c("span", [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.armenian[0]) +
-                            "\n                        "
-                        )
+                        _vm.errors.armenian ==
+                        "The armenian has already been taken."
+                          ? _c("span", [
+                              _vm._v(
+                                "\n                                This armenian word has already been taken.\n                            "
+                              )
+                            ])
+                          : _c("span", [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(_vm.errors.armenian[0]) +
+                                  "\n                            "
+                              )
+                            ])
                       ])
                     : _vm._e()
                 ]),
@@ -51372,11 +51402,20 @@ var render = function() {
                   _vm._v(" "),
                   _vm.errors.english
                     ? _c("span", [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.english[0]) +
-                            "\n                        "
-                        )
+                        _vm.errors.english ==
+                        "The english has already been taken."
+                          ? _c("span", [
+                              _vm._v(
+                                "\n                                This english word has already been taken.\n                            "
+                              )
+                            ])
+                          : _c("span", [
+                              _vm._v(
+                                "\n                                 " +
+                                  _vm._s(_vm.errors.english[0]) +
+                                  "\n                            "
+                              )
+                            ])
                       ])
                     : _vm._e()
                 ]),
@@ -51398,7 +51437,7 @@ var render = function() {
                     _vm._v(
                       "\n                            " +
                         _vm._s(word.armenian) +
-                        "\n                        "
+                        "\n                            \n                        "
                     )
                   ])
                 ]),
@@ -51507,11 +51546,20 @@ var render = function() {
                       _vm._v(" "),
                       _vm.errors.armenian
                         ? _c("span", [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(_vm.errors.armenian[0]) +
-                                "\n                            "
-                            )
+                            _vm.errors.armenian ==
+                            "The armenian has already been taken."
+                              ? _c("span", [
+                                  _vm._v(
+                                    "\n                                    This armenian word has already been taken.\n                                "
+                                  )
+                                ])
+                              : _c("span", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(_vm.errors.armenian[0]) +
+                                      "\n                                "
+                                  )
+                                ])
                           ])
                         : _vm._e()
                     ]),
@@ -51544,11 +51592,20 @@ var render = function() {
                       _vm._v(" "),
                       _vm.errors.english
                         ? _c("span", [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(_vm.errors.english[0]) +
-                                "\n                            "
-                            )
+                            _vm.errors.english ==
+                            "The english has already been taken."
+                              ? _c("span", [
+                                  _vm._v(
+                                    "\n                                    This english word has already been taken.\n                                "
+                                  )
+                                ])
+                              : _c("span", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(_vm.errors.english[0]) +
+                                      "\n                                "
+                                  )
+                                ])
                           ])
                         : _vm._e()
                     ]),

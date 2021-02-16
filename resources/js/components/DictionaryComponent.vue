@@ -7,13 +7,23 @@
                         <div class="col-5 " >
                             <input type="text" class="form-control "  placeholder="Armenian" v-model="words.armenian"  @keydown="errors.armenian = null">
                             <span v-if="errors.armenian">
-                                {{errors.armenian[0]}}
+                                <span v-if="errors.armenian=='The armenian has already been taken.'">
+                                    This armenian word has already been taken.
+                                </span>
+                                <span v-else>
+                                    {{errors.armenian[0]}}
+                                </span> 
                             </span>
                         </div>
                         <div class="col-5">
                             <input type="text" class="form-control " placeholder="English" v-model="words.english" @keydown="errors.english = null">
                             <span v-if="errors.english">
-                                {{errors.english[0]}}
+                                <span v-if="errors.english=='The english has already been taken.'">
+                                    This english word has already been taken.
+                                </span>
+                                <span v-else>
+                                     {{errors.english[0]}}
+                                </span>
                             </span>
                         </div>
                         <div class="col-2">
@@ -30,6 +40,7 @@
                         <div class="col-5">
                             <div class="word">
                                 {{ word.armenian}}
+                                
                             </div>
                         </div>
                         <div class="col-5">
@@ -61,13 +72,23 @@
                             <div class="col-5 ">
                                 <input type="text" class="form-control " placeholder="Armenian"   v-model="word.armenian" @keydown="errors.armenian = null">
                                 <span v-if="errors.armenian">
-                                {{errors.armenian[0]}}
+                                    <span v-if="errors.armenian=='The armenian has already been taken.'">
+                                        This armenian word has already been taken.
+                                    </span>
+                                    <span v-else>
+                                        {{errors.armenian[0]}}
+                                    </span>
                                 </span>
                             </div>
                             <div class="col-5">
                                 <input type="text" class="form-control " placeholder="English"   v-model="word.english" @keydown="errors.english = null">
                                 <span v-if="errors.english">
-                                {{errors.english[0]}}
+                                    <span v-if="errors.english=='The english has already been taken.'">
+                                        This english word has already been taken.
+                                    </span>
+                                    <span v-else>
+                                        {{errors.english[0]}}
+                                    </span>
                                 </span>
                             </div>
                             <div class="col-2">
