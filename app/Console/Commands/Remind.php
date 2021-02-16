@@ -45,9 +45,10 @@ class Remind extends Command
 
         $this->info('Waiting '. $this->nextMinute(). ' for next run of scheduler');
 
-        sleep($this->nextMinute());
+        // sleep($this->nextMinute());
+        sleep(120);
 
-        $this->runScheduler(); 
+        // $this->runScheduler(); 
     }
 
 
@@ -82,17 +83,17 @@ class Remind extends Command
             }
             Artisan::call('schedule:run');
 
-            sleep($this->nextMinute());
+            // sleep($this->nextMinute());
 
-            $this->runScheduler();
+            // $this->runScheduler();
         }
 
 
-            protected function nextMinute()
-            {
-                $current = Carbon::now();
+            // protected function nextMinute()
+            // {
+            //     $current = Carbon::now();
 
-                return 43200 - $current->second;
-            }
+            //     return 43200 - $current->second;
+            // }
 
 }
