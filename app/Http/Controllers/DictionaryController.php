@@ -38,8 +38,8 @@ class DictionaryController extends Controller
     public function store(Request $request)
     {
         $data = $request ->validate([
-            'armenian' => 'required|unique:dictionaries',
-            'english' => 'required|unique:dictionaries'
+            'armenian' => 'required',
+            'english' => 'required'
         ]);
         $data['user_id'] = Auth::user()->id;
 
