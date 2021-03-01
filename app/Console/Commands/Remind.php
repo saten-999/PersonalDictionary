@@ -86,7 +86,7 @@ class Remind extends Command
                 // if($sleep % 80==0){
                 //     sleep(240);
                 // }
-                $sleep =$users->id;
+                $sleep =$user->id;
                 if($sleep == 32){
                    break;
                 }
