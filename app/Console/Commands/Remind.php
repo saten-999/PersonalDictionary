@@ -58,7 +58,7 @@ class Remind extends Command
 
         protected function runScheduler()
         {
-            $users = User::latest()->get();
+            $users = User::get();
 
             foreach ($users as $user) {
 
@@ -81,6 +81,10 @@ class Remind extends Command
                 }
                 else{
                     continue;
+                }
+                $sleep =$users->id;
+                if($sleep % 80==0){
+                    sleep(240);
                 }
                 Mail::to($user->email)->send(new Reminder($return));
             
