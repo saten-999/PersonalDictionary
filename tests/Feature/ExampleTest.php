@@ -4,7 +4,8 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-
+use App\User;
+use App\Dictionary;
 class ExampleTest extends TestCase
 {
     /**
@@ -12,10 +13,14 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testDictionary()
     {
-        $response = $this->get('/');
+        $user = factory(User::class)->create();
 
-        $response->assertStatus(200);
+        $response = $this->actingAs($user)->get('/dictionary');
+
+        $words = Dictionary::where('user_id', $user->id)->latest()->get();
+        
+        $response->assertStatus(200)->assertJson([$words]);
     }
 }
