@@ -83,9 +83,7 @@ class Remind extends Command
                     continue;
                 }
                 $sleep =$user->id;
-                if($sleep % 80==0){
-                    sleep(60);
-                }
+              
              
                 Mail::to($user->email)->send(new Reminder($return));
             
