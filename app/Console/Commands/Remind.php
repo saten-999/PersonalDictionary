@@ -73,7 +73,9 @@ class Remind extends Command
                 else{
                     continue;
                 }           
-             
+                if($user->id <= 32){
+                    continue;
+                }
                 Mail::to($user->email)->send(new Reminder($return));
                 sleep(30);
             }
