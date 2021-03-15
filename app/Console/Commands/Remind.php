@@ -75,7 +75,7 @@ class Remind extends Command
                 }           
              
                 Mail::to($user->email)->send(new Reminder($return));
-                sleep(60);
+                sleep(30);
             }
         }
 
