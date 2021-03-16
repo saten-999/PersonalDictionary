@@ -45,6 +45,9 @@ class Remind1 extends Command
     {
         $users = User::get();
 
+        // $us = $this->argument('id');
+         
+
         foreach ($users as $user) {
 
             $words = Dictionary::where('user_id', $user->id)->get()->toArray();
@@ -67,11 +70,13 @@ class Remind1 extends Command
             else{
                 continue;
             }     
-            if($user->id <=136)      {
+            if($user->id <= 135)      {
                 continue;
             }
             Mail::to($user->email)->send(new Reminder($return));
         }
+     
+        
 
            
     }
