@@ -43,43 +43,36 @@ class Remind extends Command
      */
     public function handle()
     {
-       $this->runScheduler();
+        $users = User::get();
+
+        foreach ($users as $user) {
+
+            $words = Dictionary::where('user_id', $user->id)->get()->toArray();
+
+            if(count($words)>0 && count($words)<=5){
+                $return = $words ;
+            } 
+            elseif(count($words)>0 && count($words)>5){
+                $return =array();
+                $numbers = range(0, count($words)-1);
+                
+                shuffle($numbers);
+               
+
+                for ($i=0; $i <5 ; $i++) { 
+
+                    $return[$i] = $words[$numbers[$i]];
+                }
+            }
+            else{
+                continue;
+            }           
+            Mail::to($user->email)->send(new Reminder($return));
+        }
     }
 
 
-    protected function runScheduler()
-        {
-            $users = User::get();
 
-            foreach ($users as $user) {
-
-                $words = Dictionary::where('user_id', $user->id)->get()->toArray();
-
-                if(count($words)>0 && count($words)<=5){
-                    $return = $words ;
-                } 
-                elseif(count($words)>0 && count($words)>5){
-                    $return =array();
-                    $numbers = range(0, count($words)-1);
-                    
-                    shuffle($numbers);
-                   
-
-                    for ($i=0; $i <5 ; $i++) { 
-
-                        $return[$i] = $words[$numbers[$i]];
-                    }
-                }
-                else{
-                    continue;
-                }           
-                if($user->id <= 93){
-                    continue;
-                }
-                Mail::to($user->email)->send(new Reminder($return));
-                
-            }
-        }
 
          
 
