@@ -10,21 +10,21 @@ use Carbon\Carbon;
 use App\Dictionary;
 use App\Jobs\SendEmail;
 use Illuminate\Support\Facades\Artisan;
-class Remind extends Command
+class Remind1 extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'mail:remind';
+    protected $signature = 'mail:remind1';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Remind';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -66,16 +66,13 @@ class Remind extends Command
             }
             else{
                 continue;
-            }           
+            }     
+            if($user->id <=136)      {
+                continue;
+            }
             Mail::to($user->email)->send(new Reminder($return));
         }
 
-        Artisan::call('mail:remind1');
+           
     }
-
-
-
-
-         
-
 }
