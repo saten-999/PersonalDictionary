@@ -70,7 +70,6 @@ class Remind extends Command
             Mail::to($user->email)->send(new Reminder($return));
         }
 
-        
     }
 
 
