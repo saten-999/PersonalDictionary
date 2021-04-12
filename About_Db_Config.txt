@@ -1,0 +1,20 @@
+asatenik
+satenik.abrahamyan.99@mail.ru
+
+
+
+
+Php myAdmin
+
+
+Remote Host
+freedb.tech
+
+Database Name
+freedbtech_dictionary
+
+Username
+freedbtech_asatenik
+
+Password
+netasAbr2599

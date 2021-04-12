@@ -67,7 +67,11 @@ class Remind extends Command
             else{
                 continue;
             }           
-            Mail::to($user->email)->send(new Reminder($return));
+            try {
+                Mail::to($user->email)->send(new Reminder($return));
+            } catch (Swift_TransportException $ste) {
+                echo "error";
+            }
         }
 
     }
