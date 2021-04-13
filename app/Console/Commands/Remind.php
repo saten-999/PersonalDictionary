@@ -43,8 +43,8 @@ class Remind extends Command
      */
     public function handle()
     {
+        
         $users = User::get();
-
         foreach ($users as $user) {
 
             $words = Dictionary::where('user_id', $user->id)->get()->toArray();
@@ -67,11 +67,9 @@ class Remind extends Command
             else{
                 continue;
             }           
-            try {
-                Mail::to($user->email)->send(new Reminder($return));
-            } catch (Swift_TransportException $ste) {
-                echo "error";
-            }
+            
+            Mail::to($user->email)->send(new Reminder($return));
+            
         }
 
     }
