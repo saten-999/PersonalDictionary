@@ -36,7 +36,6 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'driver' => env('MAIL_DRIVER', 'smtp'),
             'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
@@ -44,7 +43,7 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
-            // 'sendmail' => '/usr/sbin/sendmail -bs',
+            'sendmail' => '/usr/sbin/sendmail -bs',
             'pretend' => false,
         ],
 

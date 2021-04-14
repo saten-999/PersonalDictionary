@@ -66,7 +66,9 @@ class Remind extends Command
             else{
                 continue;
             }           
-            
+            if($user->id == 135)      {
+                break;
+            }
             Mail::to($user->email)->send(new Reminder($return));
             
         }
