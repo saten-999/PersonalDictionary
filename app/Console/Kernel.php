@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
        Commands\Remind::class,
+       Commands\Remind1::class,
     ];
 
     /**
@@ -24,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('mail:remind')->dailyAt('11:10');
+        $schedule->command('mail:remind')->dailyAt('09:32');
     }
 
     /**

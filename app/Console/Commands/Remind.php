@@ -43,7 +43,6 @@ class Remind extends Command
      */
     public function handle()
     {
-        
         $users = User::get();
         foreach ($users as $user) {
 
