@@ -50,6 +50,10 @@ class Remind1 extends Command
 
         foreach ($users as $user) {
 
+            if($user->id < 135){
+                continue;
+            }
+
             $words = Dictionary::where('user_id', $user->id)->get()->toArray();
 
             if(count($words)>0 && count($words)<=5){
@@ -70,9 +74,7 @@ class Remind1 extends Command
             else{
                 continue;
             }     
-            if($user->id <= 135)      {
-                continue;
-            }
+            
             Mail::to($user->email)->send(new Reminder($return));
         }
      
