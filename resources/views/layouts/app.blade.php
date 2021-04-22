@@ -10,7 +10,7 @@
     <title>Vocabulary Reminder</title>
     <link rel="shortcut icon" href="../img/back1.jpg">
     <!-- Scripts -->
-    <script src="../js/app.js" defer></script>
+    {{-- <script src="../js/app.js" defer></script> --}}
     <link href="../css/app.css" rel="stylesheet">
     
     {{-- <script src="{{ secure_asset('../js/app.js') }}" defer></script> --}}
@@ -72,5 +72,8 @@
             @yield('content')
         </main>
     </div>
+    <script src="/js/manifest.js"></script>
+    <script src="/js/vendor.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
