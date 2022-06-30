@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <div class="col-sm-12">
                 <form action="" @submit.prevent="saveData" id="reg">
                     <div class="row">
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div v-for="(word, index) in words" :key="index">
-            <div class="row mt-5">
+            <div class="row mt-3">
                 <div class="col-sm-12 ">
                     <div  class="row " >
                         <div class="col-5">
@@ -202,14 +202,13 @@
 
     .word {
             border: 2px solid #b47775;
-            margin: 2vw 0.6vw 0 0.4vw;
+            margin: 0vw 0.6vw 0 0.4vw;
             width: 90%;
             padding: 3% 0;
             text-align: center;
             border-radius: 0.25rem;
     }
     .col-1{
-            margin-top: 2vw ;
             width: 90%;
             padding: 1% 0;
             text-align: center;
