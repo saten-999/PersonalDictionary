@@ -32,7 +32,7 @@
             Don’t forget to come back again tomorrow. <br> <br>
 
             XoXo, <br>
-            Dictionary Reminder by Asya <br>
+            <a href="http://perdict.herokuapp.com/">Dictionary Reminder</a> by Asya <br>
         </p>
         
     </div>
