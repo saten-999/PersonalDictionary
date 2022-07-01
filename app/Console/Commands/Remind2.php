@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use App\Dictionary;
 use App\Jobs\SendEmail;
 use Illuminate\Support\Facades\Artisan;
-class Remind1 extends Command
+class Remind2 extends Command
 {
     /**
      * The name and signature of the console command.
