@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
        Commands\Remind::class,
        Commands\Remind1::class,
+       Commands\Remind2::class,
     ];
 
     /**
