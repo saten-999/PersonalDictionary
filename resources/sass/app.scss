@@ -11,6 +11,19 @@ body, nav, .dropdown-menu{
     // color: #b47775;
 
 }
+
+main{
+  min-height: 100vh;
+}
+
+footer{
+  position: relative;
+  bottom: 0;
+  color: #b47775 ;
+  font-weight: 700;
+  padding: 20px 10px;
+}
+
 nav{
     border-bottom:1px solid #b47775 ;
 }
@@ -137,9 +150,7 @@ nav a:hover{
     }
 }
 
-
 //form
-
 
 .form-control {
     display: block;

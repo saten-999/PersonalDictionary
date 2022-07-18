@@ -59,20 +59,18 @@ class Remind3 extends Command
 
             if(count($words)>0 && count($words)<=5){
                 $return = $words ;
-            } 
-            elseif(count($words)>0 && count($words)>5){
+            }elseif(count($words)>0 && count($words)>5){
                 $return =array();
                 $numbers = range(0, count($words)-1);
                 
                 shuffle($numbers);
                
-
                 for ($i=0; $i <5 ; $i++) { 
 
                     $return[$i] = $words[$numbers[$i]];
                 }
-            }
-            else{
+
+            }else{
                 continue;
             }     
             

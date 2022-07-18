@@ -71,6 +71,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>Email: englishdictionary71@gmail.com</footer>
     </div>
     <script src="/js/manifest.js"></script>
     <script src="/js/vendor.js"></script>
