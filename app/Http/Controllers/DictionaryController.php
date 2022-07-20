@@ -29,12 +29,13 @@ class DictionaryController extends Controller
 
     public function test()
     {
-        $users = User::all()->toArray();
+        $users = User::whereNotNull('email_verified_at')->get()->toArray();
 
         for ($i=0; ; $i++) { 
             
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
+            
             if(count($words)>0 && count($words)<=5){
                 $return = $words ;
             }elseif(count($words)>0 && count($words)>5){
@@ -53,7 +54,7 @@ class DictionaryController extends Controller
             }     
 
 
-            Mail::to($users[$i]['email'])->send(new Reminder($return));
+            // Mail::to($users[$i]['email'])->send(new Reminder($return));
             
         } 
  

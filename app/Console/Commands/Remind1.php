@@ -43,7 +43,7 @@ class Remind1 extends Command
      */
     public function handle()
     {
-        $users = User::all()->toArray();
+        $users = User::whereNotNull('email_verified_at')->get()->toArray();
 
         for ($i=135; $i < 334 ; $i++) { 
             
