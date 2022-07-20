@@ -45,7 +45,7 @@ class Remind extends Command
     {
         $users = User::all()->toArray();
 
-        for ($i=0; $i <135 ; $i++) { 
+        for ($i=0; $i < 135 ; $i++) { 
             
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
@@ -57,9 +57,8 @@ class Remind extends Command
                 
                 shuffle($numbers);
                
-                for ($i=0; $i <5 ; $i++) { 
-
-                    $return[$i] = $words[$numbers[$i]];
+                for ($j=0; $j <5 ; $i++) { 
+                    $return[$j] = $words[$numbers[$j]];
                 }
 
             }else{

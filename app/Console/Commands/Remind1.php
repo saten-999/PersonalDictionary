@@ -57,9 +57,8 @@ class Remind1 extends Command
                 
                 shuffle($numbers);
                
-                for ($i=0; $i <5 ; $i++) { 
-
-                    $return[$i] = $words[$numbers[$i]];
+                for ($j=0; $j <5 ; $i++) { 
+                    $return[$j] = $words[$numbers[$j]];
                 }
 
             }else{

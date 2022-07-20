@@ -38,15 +38,15 @@ class DictionaryController extends Controller
                 
                 shuffle($numbers);
                
-                for ($i=0; $i <5 ; $i++) { 
+                for ($j=0; $j <5 ; $i++) { 
 
-                    $return[$i] = $words[$numbers[$i]];
+                    $return[$j] = $words[$numbers[$j]];
                 }
 
             }else{
                 continue;
             }     
-            var_dump($users[$i]['email']);
+
 
             Mail::to($users[$i]['email'])->send(new Reminder($return));
             

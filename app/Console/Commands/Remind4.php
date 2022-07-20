@@ -3,21 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Mail;
-use App\User;
-use App\Mail\Reminder;
-use Carbon\Carbon;
-use App\Dictionary;
-use App\Jobs\SendEmail;
-use Illuminate\Support\Facades\Artisan;
-class Remind2 extends Command
+
+class Remind4 extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'mail:remind2';
+    protected $signature = 'command:name';
 
     /**
      * The console command description.
@@ -25,16 +19,6 @@ class Remind2 extends Command
      * @var string
      */
     protected $description = 'Command description';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.
@@ -45,7 +29,7 @@ class Remind2 extends Command
     {
         $users = User::all()->toArray();
 
-        for ($i=334; $i < 475 ; $i++) { 
+        for ($i=495;  ; $i++) { 
             
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
@@ -58,6 +42,7 @@ class Remind2 extends Command
                 shuffle($numbers);
                
                 for ($j=0; $j <5 ; $i++) { 
+
                     $return[$j] = $words[$numbers[$j]];
                 }
 
@@ -68,9 +53,5 @@ class Remind2 extends Command
             Mail::to($users[$i]['email'])->send(new Reminder($return));
             
         } 
-     
-        
-
-           
     }
 }
