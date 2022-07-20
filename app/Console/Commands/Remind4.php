@@ -3,6 +3,13 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Mail;
+use App\User;
+use App\Mail\Reminder;
+use Carbon\Carbon;
+use App\Dictionary;
+use App\Jobs\SendEmail;
+use Illuminate\Support\Facades\Artisan;
 
 class Remind4 extends Command
 {
