@@ -11,7 +11,7 @@ class Remind4 extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'mail:remind4';
 
     /**
      * The console command description.
