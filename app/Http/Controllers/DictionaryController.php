@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Dictionary;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
+use Mail;
+use App\Mail\Reminder;
 class DictionaryController extends Controller
 {
     /**
@@ -17,6 +20,38 @@ class DictionaryController extends Controller
         $words = Dictionary::where('user_id', Auth::user()->id)->latest()->get();
 
         return response()->json($words);
+    }
+
+    public function test()
+    {
+        $users = User::all()->toArray();
+
+        for ($i=0; ; $i++) { 
+            
+            $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
+
+            if(count($words)>0 && count($words)<=5){
+                $return = $words ;
+            }elseif(count($words)>0 && count($words)>5){
+                $return =array();
+                $numbers = range(0, count($words)-1);
+                
+                shuffle($numbers);
+               
+                for ($i=0; $i <5 ; $i++) { 
+
+                    $return[$i] = $words[$numbers[$i]];
+                }
+
+            }else{
+                continue;
+            }     
+            var_dump($users[$i]['email']);
+
+            Mail::to($users[$i]['email'])->send(new Reminder($return));
+            
+        } 
+ 
     }
 
     /**

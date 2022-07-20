@@ -16,9 +16,8 @@ use App\User;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/ss', function () {
-    return view('mail');
-});
+
+Route::get('/ss', 'DictionaryController@test');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

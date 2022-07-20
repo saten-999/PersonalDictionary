@@ -43,35 +43,32 @@ class Remind extends Command
      */
     public function handle()
     {
-        $users = User::get();
-        foreach ($users as $user) {
+        $users = User::all()->toArray();
 
-            $words = Dictionary::where('user_id', $user->id)->get()->toArray();
+        for ($i=0; $i <135 ; $i++) { 
+            
+            $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
             if(count($words)>0 && count($words)<=5){
                 $return = $words ;
-            } 
-            elseif(count($words)>0 && count($words)>5){
+            }elseif(count($words)>0 && count($words)>5){
                 $return =array();
                 $numbers = range(0, count($words)-1);
                 
                 shuffle($numbers);
                
-
                 for ($i=0; $i <5 ; $i++) { 
 
                     $return[$i] = $words[$numbers[$i]];
                 }
-            }
-            else{
+
+            }else{
                 continue;
-            }           
-            if($user->id == 135)      {
-                break;
-            }
-            Mail::to($user->email)->send(new Reminder($return));
+            }     
+
+            Mail::to($users[$i]['email'])->send(new Reminder($return));
             
-        }
+        } 
 
     }
 

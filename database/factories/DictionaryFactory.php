@@ -1,15 +1,31 @@
 <?php
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Dictionary;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-$factory->define(Dictionary::class, function (Faker $faker) {
-    return [
-        'armenian' => $faker->name,
-        'english' => $faker->name,
-        'user_id' => factory(App\User::class)
-         
-    ];
-});
+class DictionaryFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Dictionary::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'armenian' => $this->faker->name,
+            'english' => $this->faker->name,
+            'user_id' => \App\User::factory()
+
+        ];
+    }
+}

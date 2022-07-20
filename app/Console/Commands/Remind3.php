@@ -44,18 +44,11 @@ class Remind3 extends Command
      */
     public function handle()
     {
-        $users = User::get();
+        $users = User::all()->toArray();
 
-        // $us = $this->argument('id');
-         
-
-        foreach ($users as $user) {
-
-            if($user->id < 475){
-                continue;
-            }
-
-            $words = Dictionary::where('user_id', $user->id)->get()->toArray();
+        for ($i=475; $i <3 ; $i++) { 
+            
+            $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
             if(count($words)>0 && count($words)<=5){
                 $return = $words ;
@@ -73,9 +66,10 @@ class Remind3 extends Command
             }else{
                 continue;
             }     
+
+            Mail::to($users[$i]['email'])->send(new Reminder($return));
             
-            Mail::to($user->email)->send(new Reminder($return));
-        }
+        } 
      
         
 
