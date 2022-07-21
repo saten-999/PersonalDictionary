@@ -30,11 +30,10 @@ class DictionaryController extends Controller
     public function test()
     {
         $users = User::whereNotNull('email_verified_at')->get()->toArray();
+      
+        for ($i=0; $i<= count($users); $i++) { 
 
-        for ($i=0; ; $i++) { 
-            
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
-
             
             if(count($words)>0 && count($words)<=5){
                 $return = $words ;
@@ -54,7 +53,7 @@ class DictionaryController extends Controller
             }     
 
 
-            // Mail::to($users[$i]['email'])->send(new Reminder($return));
+            Mail::to($users[$i]['email'])->send(new Reminder($return));
             
         } 
  

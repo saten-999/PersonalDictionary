@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
        Commands\Remind1::class,
        Commands\Remind2::class,
        Commands\Remind3::class,
+       Commands\Remind4::class,
     ];
 
     /**
