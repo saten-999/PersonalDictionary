@@ -36,7 +36,7 @@
         </p> --}}
         
 
-        <p>
+        <p class="h3 mt-5">
             Please Verify your  <a href="http://perdict.herokuapp.com/">Dictionary Reminder</a> Account
         </p>
     </div>
