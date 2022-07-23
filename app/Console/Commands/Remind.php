@@ -44,30 +44,29 @@ class Remind extends Command
     public function handle()
     {
         set_time_limit(0);
-        // $users = User::whereNotNull('email_verified_at')->get()->toArray();
-        $users = User::get()->toArray();
+        $users = User::whereNull('email_verified_at')->get()->toArray();
 
         for ($i=0; $i < count($users) ; $i++) { 
             
-            $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
+            // $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
-            if(count($words)>0 && count($words)<=5){
-                $return = $words ;
-            }elseif(count($words)>0 && count($words)>5){
-                $return =array();
-                $numbers = range(0, count($words)-1);
+            // if(count($words)>0 && count($words)<=5){
+            //     $return = $words ;
+            // }elseif(count($words)>0 && count($words)>5){
+            //     $return =array();
+            //     $numbers = range(0, count($words)-1);
                 
-                shuffle($numbers);
+            //     shuffle($numbers);
                
-                for ($j=0; $j <5 ; $i++) { 
-                    $return[$j] = $words[$numbers[$j]];
-                }
+            //     for ($j=0; $j <5 ; $i++) { 
+            //         $return[$j] = $words[$numbers[$j]];
+            //     }
 
-            }else{
-                continue;
-            }     
+            // }else{
+            //     continue;
+            // }     
 
-            Mail::to($users[$i]['email'])->send(new Reminder($return));
+            Mail::to($users[$i]['email'])->send(new Reminder());
             
         } 
 
