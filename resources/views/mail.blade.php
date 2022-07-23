@@ -15,7 +15,7 @@
         <img  
         src="https://lh3.googleusercontent.com/pw/ACtC-3dSTnywNLwtD66H3Tv1zIyG3gp1Ge66zgATpLqLhSTq37rdGHLWqBLggqYv0SZ9KP14Nv1g4I7SA8vJMUmds_UsnBJN_uUy-QMIWvwy4Osg-Kfk9d8PSkNkI4FeeCIa4G3OTYOybMSJMJsWuK7ttQ=w1000-h150-no"
          alt="" >
-         <p>
+         {{-- <p>
             Hey there, your Dictionary Reminder here! <br> <br>
 
             Thank you for signing up and I hope you enjoy this process as much as we do. <br> <br>
@@ -33,8 +33,12 @@
 
             XoXo, <br>
             <a href="http://perdict.herokuapp.com/">Dictionary Reminder</a> by Asya <br>
-        </p>
+        </p> --}}
         
+
+        <p>
+            Please Verify your  <a href="http://perdict.herokuapp.com/">Dictionary Reminder</a> Account
+        </p>
     </div>
 
     

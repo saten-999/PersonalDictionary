@@ -13,6 +13,6 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-        \App\Dictionary::factory()->count(1000)->create(); 
+        \App\Dictionary::factory()->count(500)->create(); 
     }
 }

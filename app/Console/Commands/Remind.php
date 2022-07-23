@@ -43,9 +43,11 @@ class Remind extends Command
      */
     public function handle()
     {
-        $users = User::whereNotNull('email_verified_at')->get()->toArray();
+        set_time_limit(0);
+        // $users = User::whereNotNull('email_verified_at')->get()->toArray();
+        $users = User::get()->toArray();
 
-        for ($i=0; $i < 135 ; $i++) { 
+        for ($i=0; $i < count($users) ; $i++) { 
             
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
