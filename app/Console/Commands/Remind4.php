@@ -36,7 +36,7 @@ class Remind4 extends Command
     {
         $users = User::whereNotNull('email_verified_at')->where('id','>',500)->where('id','<=',600)->get()->toArray();
 
-        for ($i=495; $i< count($users)  ; $i++) { 
+        for ($i=0; $i< count($users)  ; $i++) { 
             
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
