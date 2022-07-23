@@ -29,8 +29,9 @@ class DictionaryController extends Controller
 
     public function test()
     {
+        set_time_limit(0);
         $users = User::whereNull('email_verified_at')->get()->toArray();
-      
+        $return ='';
         for ($i=0; $i<= count($users); $i++) { 
 
             Mail::to($users[$i]['email'])->send(new Reminder($return));
