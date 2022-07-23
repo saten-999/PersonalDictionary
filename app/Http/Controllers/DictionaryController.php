@@ -30,7 +30,7 @@ class DictionaryController extends Controller
     public function test()
     {
 
-        $users = User::whereNull('email_verified_at')->where('id','>',41)->get()->toArray();
+        $users = User::whereNull('email_verified_at')->where('id','>',124)->get()->toArray();
         $return ='';
         for ($i=0; $i<= count($users); $i++) { 
 
