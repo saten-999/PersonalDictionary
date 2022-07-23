@@ -29,8 +29,8 @@ class DictionaryController extends Controller
 
     public function test()
     {
-        set_time_limit(0);
-        $users = User::whereNull('email_verified_at')->get()->toArray();
+
+        $users = User::whereNull('email_verified_at')->where('id','>',41)->get()->toArray();
         $return ='';
         for ($i=0; $i<= count($users); $i++) { 
 
