@@ -43,7 +43,7 @@ class Remind extends Command
      */
     public function handle()
     {
-        $users = User::where('id','>=',0)->where('id','<=',100)->get()->toArray();
+        $users = User::whereNotNull('email_verified_at')->where('id','>=',0)->where('id','<=',100)->get()->toArray();
 
         for ($i=0; $i < count($users) ; $i++) { 
             
