@@ -31,10 +31,6 @@ class Remind extends Command
      *
      * @return void
      */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.
@@ -49,9 +45,9 @@ class Remind extends Command
             
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
 
-            if(count($words)>0 && count($words)<=5){
+            if(!empty($words)>0 && count($words)<=5){
                 $return = $words ;
-            }elseif(count($words)>0 && count($words)>5){
+            }elseif(!empty($words)>0 && count($words)>5){
                 $return =array();
                 $numbers = range(0, count($words)-1);
                 
