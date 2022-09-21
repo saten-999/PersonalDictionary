@@ -43,7 +43,7 @@ class Remind2 extends Command
      */
     public function handle()
     {
-        $users = User::whereNotNull('email_verified_at')->where('id','>',200)->where('id','<=',300)->get()->toArray();
+        $users = User::whereNotNull('email_verified_at')->skip(200)->take(100)->get()->toArray();
 
         for ($i=0; $i < count($users) ; $i++) { 
             
@@ -57,7 +57,7 @@ class Remind2 extends Command
                 
                 shuffle($numbers);
                
-                for ($j=0; $j <5 ; $i++) { 
+                for ($j=0; $j <5 ; $j++) { 
                     $return[$j] = $words[$numbers[$j]];
                 }
 

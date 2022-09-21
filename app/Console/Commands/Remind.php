@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Dictionary;
 use App\Jobs\SendEmail;
 use Illuminate\Support\Facades\Artisan;
+
 class Remind extends Command
 {
     /**
@@ -39,27 +40,27 @@ class Remind extends Command
      */
     public function handle()
     {
-        $users = User::whereNotNull('email_verified_at')->where('id','>=',0)->where('id','<=',100)->get()->toArray();
+        $users = User::whereNotNull('email_verified_at')->take(100)->get()->toArray();
 
         for ($i=0; $i < count($users) ; $i++) { 
-            
+           
             $words = Dictionary::where('user_id', $users[$i]['id'])->get()->toArray();
-
+            
             if(!empty($words)>0 && count($words)<=5){
                 $return = $words ;
             }elseif(!empty($words)>0 && count($words)>5){
-                $return =array();
+                $return =[];
                 $numbers = range(0, count($words)-1);
                 
                 shuffle($numbers);
                
-                for ($j=0; $j <5 ; $i++) { 
+                for ($j=0; $j <5 ; $j++) { 
                     $return[$j] = $words[$numbers[$j]];
                 }
             }else{
                 continue;
             }     
-
+            
             Mail::to($users[$i]['email'])->send(new Reminder($return));
             
         } 
