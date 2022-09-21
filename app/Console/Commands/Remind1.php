@@ -64,7 +64,7 @@ class Remind1 extends Command
             }else{
                 continue;
             }     
-
+            // var_dump($users[$i]['email']);
             Mail::to($users[$i]['email'])->send(new Reminder($return));
             
         } 

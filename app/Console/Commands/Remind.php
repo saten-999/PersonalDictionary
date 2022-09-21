@@ -56,7 +56,6 @@ class Remind extends Command
                 for ($j=0; $j <5 ; $i++) { 
                     $return[$j] = $words[$numbers[$j]];
                 }
-
             }else{
                 continue;
             }     
